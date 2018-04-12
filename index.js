@@ -82,14 +82,16 @@ controller.on('rtm_close', function (bot) {
 // BEGIN EDITING HERE!
 
 controller.on('bot_channel_join', function (bot, message) {
-    bot.reply(message, "I'm here!")
+    bot.reply(message, "Salut tout le monde")
 });
 
 controller.hears('hello', 'direct_message', function (bot, message) {
     bot.reply(message, 'Hello!');
 });
 
-
+controller.hears(['@dev', '@data'], 'direct_message', function (bot, message) {
+    bot.reply(message, JSON.stringify(message.text));
+});
 /**
  * AN example of what could be:
  * Any un-handled direct mention gets a reaction and a pat response!
